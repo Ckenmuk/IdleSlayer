@@ -63,5 +63,18 @@ public class Player : MonoBehaviour
         {
             MoneyManager.AddCoins(goldCoinsCost);
         }
+        else if (collision.tag == "Chest")
+        {
+            int i = 1;
+            for (int j = 1; j < 4; j++)
+            {
+                if (Random.Range(0, (float)System.Math.Pow(10, j)) < (float)System.Math.Pow(10, j - 1))
+                {
+                    i = j;
+                    break;
+                }
+            }
+            MoneyManager.Bonuses(i);
+        }
     }
 }

@@ -1,23 +1,26 @@
+using System;
 using UnityEngine;
 
 public class ObstaclesSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private GameObject[] coins;
+    [SerializeField] private GameObject[] bonuses;
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
-    [SerializeField] private float enemiesSpawnFrequency;
-    [SerializeField] private float coinsSpawnFrequency;
+    public float enemiesSpawnFrequency = 0.5f;
+    public float coinsSpawnFrequency = 2.0f;
+    public float bonusesSpawnFrequency = 10.0f;
     private float enemySpawnTime;
     private float coinsSpawnTime;
+    private float bonusesSpawnTime;
 
 
     private void Update()
     {
         Timer();
-        
     }
 
     private void Timer()
@@ -32,26 +35,28 @@ public class ObstaclesSpawn : MonoBehaviour
             Spawn(coins);
             coinsSpawnTime = Time.time + coinsSpawnFrequency;
         }
+        if (Time.time > bonusesSpawnTime)
+        {
+            Spawn(bonuses);
+            bonusesSpawnTime = Time.time + bonusesSpawnFrequency;
+        }
     }
 
     private void Spawn(GameObject[] spawnObject)
     {
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        float randomX = UnityEngine.Random.Range(minX, maxX);
+        float randomY = UnityEngine.Random.Range(minY, maxY);
 
-        int randomObject;
+        int randomObject = 0;
 
-        if (Random.Range(0, 1000) < 10)
+        
+        for (int j = 0; j < spawnObject.Length; j++)
         {
-            randomObject = 2;
-        }
-        else if (Random.Range(0, 100) < 10)
-        {
-            randomObject = 1;
-        }
-        else
-        {
-            randomObject = 0;
+            if (UnityEngine.Random.Range(0, (float)Math.Pow(10, j)) < (float)Math.Pow(10, j - 1))
+            {
+                randomObject = j;
+                break;
+            }
         }
 
         Instantiate(spawnObject[randomObject], transform.position + new Vector3(randomX, randomY, 0.0f), transform.rotation);
