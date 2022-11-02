@@ -9,16 +9,19 @@ public class MoneyManager : MonoBehaviour
     public float coins;
     private float sec;
     private float minCps;
+    private float killed;
 
 
     [SerializeField] private TMP_Text cpsText;
     [SerializeField] private TMP_Text coinsText;
+    [SerializeField] private TMP_Text killedText;
     [SerializeField] private ObstaclesSpawn spawn;
 
     private void Start()
     {
         coins = PlayerPrefs.GetFloat("coins");
-        cps = PlayerPrefs.GetFloat("cps");   
+        cps = PlayerPrefs.GetFloat("cps");
+        killed = PlayerPrefs.GetFloat("killed");
     }
 
     private void Update()
@@ -54,6 +57,7 @@ public class MoneyManager : MonoBehaviour
         {
             coinsText.text = coins.ToString();
         }
+        killedText.text = killed.ToString() + " killed";
 
     }
 
@@ -64,15 +68,26 @@ public class MoneyManager : MonoBehaviour
         PlayerPrefs.SetFloat("coins", coins);
     }
 
-    public void Multipier(float mult)
+    public void Multipier(float mult, bool plus)
     {
         cps += mult;
         if (cps < 0)
         {
-            cps = 0.0f;
+            cps = minCps;
         }
+
+        if (plus)
+        {
+            killed++;
+        }
+        else
+        {
+            killed = 0;
+        }
+
         cps = (float)Math.Round(cps, 2);
         PlayerPrefs.SetFloat("cps", cps);
+        PlayerPrefs.SetFloat("killed", killed);
     }
 
     public void Bonuses(int i)

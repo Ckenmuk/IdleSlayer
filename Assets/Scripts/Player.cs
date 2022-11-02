@@ -41,15 +41,15 @@ public class Player : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            MoneyManager.Multipier(enemyMult);
+            MoneyManager.Multipier(enemyMult, true);
         }
         else if (collision.tag == "Boss")
         {
-            MoneyManager.Multipier(bossMult);
+            MoneyManager.Multipier(bossMult, true);
         }
         else if (collision.tag == "Sword")
         {
-            MoneyManager.Multipier(swordMult);
+            MoneyManager.Multipier(swordMult, false);
         }
         else if (collision.tag == "BronzeCoin")
         {
