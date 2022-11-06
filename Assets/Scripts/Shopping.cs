@@ -3,8 +3,7 @@ using UnityEngine;
 public class Shopping : MonoBehaviour
 {
     [SerializeField] GameObject shop;
-    //[SerializeField] GameObject exit;
-
+    
     private bool isOpen;
 
     private void Start()
@@ -14,14 +13,7 @@ public class Shopping : MonoBehaviour
 
     private void Update()
     {
-        if (!isOpen)
-        {
-            shop.SetActive(false);
-        }
-        else
-        {
-            shop.SetActive(true);
-        }
+        shop.SetActive(isOpen);
     }
 
     public void ShopIsOpen()

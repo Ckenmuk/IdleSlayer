@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    public float cps;
-    public float coins;
-    private float sec;
-    private float minCps;
+    public float cps { get; private set; }
+    public float coins { get; private set; }
+    public float minCps { get; private set; }
+
     private float killed;
+    private float sec;
 
 
     [SerializeField] private TMP_Text cpsText;
@@ -19,13 +20,11 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
-        coins = PlayerPrefs.GetFloat("coins");
-        cps = PlayerPrefs.GetFloat("cps");
-        killed = PlayerPrefs.GetFloat("killed");
     }
 
     private void Update()
     {
+        GetPlayerPrefs();
         if (Time.time > sec)
         {
             AddCoins(cps);
@@ -45,13 +44,13 @@ public class MoneyManager : MonoBehaviour
             cpsText.text = cps.ToString() + " CpS";
         }
 
-        if (coins >= 1000f)
+        if (coins >= 10000f)
         {
-            coinsText.text = coins.ToString("e2", CultureInfo.InvariantCulture) + " CpS";
+            coinsText.text = coins.ToString("e2", CultureInfo.InvariantCulture);
         }
-        else if (coins >= 100f && coins < 1000f)
+        else if (coins >= 100f && coins < 10000f)
         {
-            coinsText.text = Math.Round(coins, 0).ToString() + " CpS";
+            coinsText.text = Math.Round(coins, 0).ToString();
         }
         else
         {
@@ -61,11 +60,26 @@ public class MoneyManager : MonoBehaviour
 
     }
 
+    public void CoinsUpdate(float coins)
+    {
+        this.coins = coins;
+    }
+
+    public void CpsUpdate(float cps)
+    {
+        this.cps = cps;
+    }
+
+    public void MinCpsUpdate(float minCps)
+    {
+        this.minCps = minCps;
+    }
+
     public void AddCoins(float cost)
     {
         coins += cost;
-        coins = (float)Math.Round(coins, 2);
-        PlayerPrefs.SetFloat("coins", coins);
+        coins = (float)Math.Round(coins, 2);/*
+        PlayerPrefs.SetFloat("coins", coins);*/
     }
 
     public void Multipier(float mult, bool plus)
@@ -85,9 +99,9 @@ public class MoneyManager : MonoBehaviour
             killed = 0;
         }
 
-        cps = (float)Math.Round(cps, 2);
+        cps = (float)Math.Round(cps, 2);/*
         PlayerPrefs.SetFloat("cps", cps);
-        PlayerPrefs.SetFloat("killed", killed);
+        PlayerPrefs.SetFloat("killed", killed);*/
     }
 
     public void Bonuses(int i)
@@ -105,6 +119,14 @@ public class MoneyManager : MonoBehaviour
         spawn.coinsSpawnFrequency = 2.0f;
         spawn.bonusesSpawnFrequency = 10.0f;
 
+    }
+
+    private void GetPlayerPrefs()
+    {/*
+        coins = PlayerPrefs.GetFloat("coins");
+        cps = PlayerPrefs.GetFloat("cps");
+        minCps = PlayerPrefs.GetFloat("minCps");
+        killed = PlayerPrefs.GetFloat("killed");*/
     }
 
 }
