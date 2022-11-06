@@ -50,9 +50,9 @@ public class ObstaclesSpawn : MonoBehaviour
         int randomObject = 0;
 
         
-        for (int j = 0; j < spawnObject.Length; j++)
+        for (int j = spawnObject.Length; j >= 0; j--)
         {
-            if (UnityEngine.Random.Range(0, (float)Math.Pow(10, j)) < (float)Math.Pow(10, j - 1))
+            if (UnityEngine.Random.Range(0, (float)Math.Pow(10, j)) < 5)
             {
                 randomObject = j;
                 break;
