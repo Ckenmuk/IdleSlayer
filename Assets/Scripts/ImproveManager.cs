@@ -120,12 +120,117 @@ public class ImproveManager : MonoBehaviour
 
         var flvl = GameObject.Find("FistsLvl");
         var flvlText = flvl.GetComponent<TMP_Text>();
-        flvlText.text = fistsLvl.ToString("f0") + "level";
+        flvlText.text = fistsLvl.ToString("f0") + " level";
 
         var fcps = GameObject.Find("FistsCpS");
         var fcpsText = fcps.GetComponent<TMP_Text>();
         fcpsText.text = fistsCps.ToString("f0") + " CpS";
     }
+
+    public void SetStick()
+    {
+        if (coins >= stickCost * multiplier)
+        {
+            coins -= stickCost * multiplier;
+            MoneyManager.CoinsUpdate(coins);
+            stickLvl += multiplier;
+            cps -= minCps;
+            minCps -= stickCps;
+            stickCps += 0.1f * multiplier;
+            minCps += stickCps;
+            MoneyManager.MinCpsUpdate(minCps);
+            cps += minCps;
+            MoneyManager.CpsUpdate(cps);
+            stickCost *= 1.1f;
+        }
+
+        var flvl = GameObject.Find("StickLvl");
+        var flvlText = flvl.GetComponent<TMP_Text>();
+        flvlText.text = stickLvl.ToString("f0") + " level";
+
+        var fcps = GameObject.Find("StickCpS");
+        var fcpsText = fcps.GetComponent<TMP_Text>();
+        fcpsText.text = stickCps.ToString("f0") + " CpS";
+    }
+
+    public void SetBbBat()
+    {
+        if (coins >= bbBatCost * multiplier)
+        {
+            coins -= bbBatCost * multiplier;
+            MoneyManager.CoinsUpdate(coins);
+            bbBatLvl += multiplier;
+            cps -= minCps;
+            minCps -= bbBatCps;
+            bbBatCps += 0.1f * multiplier;
+            minCps += bbBatCps;
+            MoneyManager.MinCpsUpdate(minCps);
+            cps += minCps;
+            MoneyManager.CpsUpdate(cps);
+            bbBatCost *= 1.1f;
+        }
+
+        var flvl = GameObject.Find("BbBatLvl");
+        var flvlText = flvl.GetComponent<TMP_Text>();
+        flvlText.text = bbBatLvl.ToString("f0") + " level";
+
+        var fcps = GameObject.Find("BbBatCpS");
+        var fcpsText = fcps.GetComponent<TMP_Text>();
+        fcpsText.text = bbBatCps.ToString("f0") + " CpS";
+    }
+
+    public void SetRudis()
+    {
+        if (coins >= rudisCost * multiplier)
+        {
+            coins -= rudisCost * multiplier;
+            MoneyManager.CoinsUpdate(coins);
+            rudisLvl += multiplier;
+            cps -= minCps;
+            minCps -= rudisCps;
+            rudisCps += 0.1f * multiplier;
+            minCps += rudisCps;
+            MoneyManager.MinCpsUpdate(minCps);
+            cps += minCps;
+            MoneyManager.CpsUpdate(cps);
+            rudisCost *= 1.1f;
+        }
+
+        var flvl = GameObject.Find("RudisLvl");
+        var flvlText = flvl.GetComponent<TMP_Text>();
+        flvlText.text = rudisLvl.ToString("f0") + " level";
+
+        var fcps = GameObject.Find("RudisCpS");
+        var fcpsText = fcps.GetComponent<TMP_Text>();
+        fcpsText.text = rudisCps.ToString("f0") + " CpS";
+    }
+
+    public void SetSword()
+    {
+        if (coins >= swordCost * multiplier)
+        {
+            coins -= swordCost * multiplier;
+            MoneyManager.CoinsUpdate(coins);
+            swordLvl += multiplier;
+            cps -= minCps;
+            minCps -= swordCps;
+            swordCps += 0.1f * multiplier;
+            minCps += swordCps;
+            MoneyManager.MinCpsUpdate(minCps);
+            cps += minCps;
+            MoneyManager.CpsUpdate(cps);
+            swordCost *= 1.1f;
+        }
+
+        var flvl = GameObject.Find("SwordLvl");
+        var flvlText = flvl.GetComponent<TMP_Text>();
+        flvlText.text = swordLvl.ToString("f0") + " level";
+
+        var fcps = GameObject.Find("SwordCpS");
+        var fcpsText = fcps.GetComponent<TMP_Text>();
+        fcpsText.text = swordCps.ToString("f0") + " CpS";
+    }
+
 
     private void ShowImprove()
     {

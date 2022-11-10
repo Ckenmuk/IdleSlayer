@@ -12,15 +12,31 @@ public class MoneyManager : MonoBehaviour
     private float killed;
     private float sec;
 
+    public float t, tmax;
+    public float speed;
 
     [SerializeField] private TMP_Text cpsText;
     [SerializeField] private TMP_Text coinsText;
     [SerializeField] private TMP_Text killedText;
     [SerializeField] private ObstaclesSpawn spawn;
 
+    private Settings settings;
+
     private void Start()
     {
+        settings = FindObjectOfType<Settings>();
+
+        coins = settings.coins;
+        cps = settings.cps;
+
+        t = tmax;
     }
+
+    private void OnApplicationQuit()
+    {
+
+    }
+
 
     private void Update()
     {
@@ -57,6 +73,21 @@ public class MoneyManager : MonoBehaviour
             coinsText.text = coins.ToString();
         }
         killedText.text = killed.ToString() + " killed";
+
+
+        if(t <= 0)
+        {
+            settings.coins = coins;
+            settings.cps = cps;
+            settings.WriteNewSettings();
+
+            t = tmax;
+        }
+        else
+        {
+            t -= Time.deltaTime * speed;
+        }
+
 
     }
 

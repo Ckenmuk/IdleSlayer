@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
         {
             MoneyManager.Multipier(swordMult, false);
         }
+        else if (collision.tag == "Meteor")
+        {
+            MoneyManager.Multipier(MoneyManager.cps, false);
+        }
         else if (collision.tag == "BronzeCoin")
         {
             MoneyManager.AddCoins(bronzeCoinsCost);

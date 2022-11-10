@@ -1080,7 +1080,7 @@ Transform:
   m_GameObject: {fileID: 204891574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -41.280544}
-  m_LocalScale: {x: 41.280544, y: 41.280544, z: 41.280544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 306673381}
@@ -1120,6 +1120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421dd8a3d8319024282c3386cc9779b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  t: 0
+  tmax: 10
+  speed: 1
   cpsText: {fileID: 916259823}
   coinsText: {fileID: 1549050622}
   killedText: {fileID: 846931576}
@@ -2557,7 +2560,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 676630635}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204891579}
+        m_TargetAssemblyTypeName: ImproveManager, Assembly-CSharp
+        m_MethodName: SetSword
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &676630635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,6 +2786,7 @@ MonoBehaviour:
   - {fileID: 5395797811537075925, guid: c42efd030c0798e4e86d3ac8f8d9b511, type: 3}
   bonuses:
   - {fileID: 289981309615557336, guid: 81e8933419220bc4d82eeb19caacdd2c, type: 3}
+  - {fileID: 9204014537424091577, guid: 55cd591896ad0bb46a797ce21641f9e3, type: 3}
   minX: -2.15
   maxX: 2.15
   minY: 4.15
@@ -3272,7 +3288,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.9995939}
   m_AnchoredPosition: {x: 0, y: 0.15000153}
   m_SizeDelta: {x: 20, y: 19.69}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3667,7 +3683,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 916231751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204891579}
+        m_TargetAssemblyTypeName: ImproveManager, Assembly-CSharp
+        m_MethodName: SetStick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &916231751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5576,9 +5604,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -13, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1385611374
 MonoBehaviour:
@@ -5994,7 +6022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1602836236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6303,7 +6331,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1634295842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204891579}
+        m_TargetAssemblyTypeName: ImproveManager, Assembly-CSharp
+        m_MethodName: SetBbBat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1634295842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7041,7 +7081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000023811137}
+  m_AnchoredPosition: {x: 0, y: 0.0000893965}
   m_SizeDelta: {x: 0, y: 205.02}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1847961153
@@ -7523,7 +7563,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 802226995}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9995939
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7690,7 +7730,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2094806102}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204891579}
+        m_TargetAssemblyTypeName: ImproveManager, Assembly-CSharp
+        m_MethodName: SetRudis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2094806102
 MonoBehaviour:
   m_ObjectHideFlags: 0

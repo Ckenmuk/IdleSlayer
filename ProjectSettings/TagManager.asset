@@ -12,6 +12,7 @@ TagManager:
   - GoldCoin
   - Sword
   - Chest
+  - Meteor
   layers:
   - Default
   - TransparentFX
