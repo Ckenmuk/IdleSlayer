@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private float bossMult = .1f;
     private float swordMult = -1.0f;
 
+    private float meteorMult;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
         {
             rb.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         }
+
+        meteorMult = -2 * MoneyManager.cps;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,7 +57,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.tag == "Meteor")
         {
-            MoneyManager.Multipier(MoneyManager.cps, false);
+            MoneyManager.Multipier(meteorMult, false);
         }
         else if (collision.tag == "BronzeCoin")
         {

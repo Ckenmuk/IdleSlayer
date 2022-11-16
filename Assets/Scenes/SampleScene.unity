@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29114c8c60755e4d94a9252480339eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 50
+  playerSpeed: 1
   MoneyManager: {fileID: 204891578}
 --- !u!58 &59197078
 CircleCollider2D:
@@ -731,7 +731,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136397087}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1079,7 +1079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204891574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -41.280544}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eac1e05b79bacf4287b3192157c18ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 10
+  cameraSpeed: 0.25
 --- !u!114 &204891578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,7 +2778,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 2423057291859541421, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
   - {fileID: 2644356497350742399, guid: e2f953c2a8cd331478b92eaf7d80cba3, type: 3}
-  - {fileID: 5947128097817538945, guid: f03525251d7f2be419b226c1810b3194, type: 3}
+  - {fileID: 958903619753677015, guid: cafc5b61efa62ec4c89df129c6163549, type: 3}
   - {fileID: 958903619753677015, guid: cafc5b61efa62ec4c89df129c6163549, type: 3}
   coins:
   - {fileID: 8303855418190782630, guid: 2aaad313ac6bb454ea64f95f85122d19, type: 3}
@@ -2787,10 +2787,10 @@ MonoBehaviour:
   bonuses:
   - {fileID: 289981309615557336, guid: 81e8933419220bc4d82eeb19caacdd2c, type: 3}
   - {fileID: 9204014537424091577, guid: 55cd591896ad0bb46a797ce21641f9e3, type: 3}
-  minX: -2.15
-  maxX: 2.15
-  minY: 4.15
-  maxY: 4.3
+  minX: -0.055
+  maxX: 0.055
+  minY: 0.095
+  maxY: 0.1
   enemiesSpawnFrequency: 0.5
   coinsSpawnFrequency: 2
   bonusesSpawnFrequency: 10
@@ -3288,7 +3288,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9995939}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.15000153}
   m_SizeDelta: {x: 20, y: 19.69}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4071,7 +4071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012398842}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 4, z: 0.2}
+  m_LocalPosition: {x: -0, y: 4, z: 0}
   m_LocalScale: {x: 0.75, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4195,9 +4195,9 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034498734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.0590816}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.024224488, y: 0.024224488, z: 0.024224488}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1459566562}
   - {fileID: 1353291255}
@@ -4208,8 +4208,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 296, y: 524}
+  m_AnchoredPosition: {x: 0.172, y: -0.794}
+  m_SizeDelta: {x: 290.608, y: 496.751}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034498736
 MonoBehaviour:
@@ -4930,7 +4930,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262454930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.9757755}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.024224488, y: 0.024224488, z: 0.024224488}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5160,7 +5160,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342566169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.024224488, y: 0.024224488, z: 0.024224488}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5555,7 +5555,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03361416, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5566,7 +5566,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.538013, y: 1}
+  m_Size: {x: 25, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1385611372
 GameObject:
@@ -5895,7 +5895,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549050620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7563,7 +7563,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 802226995}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9995939
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -21,7 +21,7 @@ public class ObstaclesSpawn : MonoBehaviour
     private float enemySpawnTime;
     private float coinsSpawnTime;
     private float bonusesSpawnTime;
-
+    
 
     private void Update()
     {
@@ -66,14 +66,17 @@ public class ObstaclesSpawn : MonoBehaviour
 
         Instantiate(spawnObject[randomObject], transform.position + new Vector3(randomX, randomY, 0.0f), transform.rotation);
 
- /*       if (randomX > 0)
-        {
-            spawnObject[randomObject].transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
-        }
-        else
-        {
-            spawnObject[randomObject].transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
-        }
-*/
+        /*       if (randomX > 0)
+               {
+                   spawnObject[randomObject].transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
+               }
+               else
+               {
+                   spawnObject[randomObject].transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+               }
+       */
+
     }
+
+    
 }

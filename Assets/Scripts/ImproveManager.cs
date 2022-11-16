@@ -124,7 +124,7 @@ public class ImproveManager : MonoBehaviour
 
         var fcps = GameObject.Find("FistsCpS");
         var fcpsText = fcps.GetComponent<TMP_Text>();
-        fcpsText.text = fistsCps.ToString("f0") + " CpS";
+        fcpsText.text = fistsCps.ToString("f1") + " CpS";
     }
 
     public void SetStick()
@@ -150,7 +150,7 @@ public class ImproveManager : MonoBehaviour
 
         var fcps = GameObject.Find("StickCpS");
         var fcpsText = fcps.GetComponent<TMP_Text>();
-        fcpsText.text = stickCps.ToString("f0") + " CpS";
+        fcpsText.text = stickCps.ToString("f1") + " CpS";
     }
 
     public void SetBbBat()
@@ -176,7 +176,7 @@ public class ImproveManager : MonoBehaviour
 
         var fcps = GameObject.Find("BbBatCpS");
         var fcpsText = fcps.GetComponent<TMP_Text>();
-        fcpsText.text = bbBatCps.ToString("f0") + " CpS";
+        fcpsText.text = bbBatCps.ToString("f1") + " CpS";
     }
 
     public void SetRudis()
@@ -202,7 +202,7 @@ public class ImproveManager : MonoBehaviour
 
         var fcps = GameObject.Find("RudisCpS");
         var fcpsText = fcps.GetComponent<TMP_Text>();
-        fcpsText.text = rudisCps.ToString("f0") + " CpS";
+        fcpsText.text = rudisCps.ToString("f1") + " CpS";
     }
 
     public void SetSword()
@@ -228,7 +228,7 @@ public class ImproveManager : MonoBehaviour
 
         var fcps = GameObject.Find("SwordCpS");
         var fcpsText = fcps.GetComponent<TMP_Text>();
-        fcpsText.text = swordCps.ToString("f0") + " CpS";
+        fcpsText.text = swordCps.ToString("f1") + " CpS";
     }
 
 

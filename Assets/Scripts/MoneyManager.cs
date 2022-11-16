@@ -28,6 +28,7 @@ public class MoneyManager : MonoBehaviour
 
         coins = settings.coins;
         cps = settings.cps;
+        minCps = settings.minCps;
 
         t = tmax;
     }
@@ -79,6 +80,7 @@ public class MoneyManager : MonoBehaviour
         {
             settings.coins = coins;
             settings.cps = cps;
+            settings.minCps = minCps;
             settings.WriteNewSettings();
 
             t = tmax;

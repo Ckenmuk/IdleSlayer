@@ -7,6 +7,7 @@ public class Settings : MonoBehaviour
 {
     public float coins;
     public float cps;
+    public float minCps;
 
     public string path;
 
@@ -40,6 +41,7 @@ public class Settings : MonoBehaviour
         string[] data = File.ReadAllLines(path + "settings.ini");
         coins = (float)(double.Parse(data[0].Remove(0, data[0].IndexOf("=") + 2)));
         cps = (float)(double.Parse(data[1].Remove(0, data[1].IndexOf("=") + 2)));
+        minCps = (float)(double.Parse(data[2].Remove(0, data[2].IndexOf("=") + 2)));
     }
 
     private void WriteDefault()
@@ -47,6 +49,7 @@ public class Settings : MonoBehaviour
         List<string> td = new List<string>();
         td.Add("Coins = 0");
         td.Add("CpS = 0");
+        td.Add("MinCpS = 0");
 
         File.WriteAllLines(path + "settings.ini", td.ToArray());
 
@@ -58,6 +61,7 @@ public class Settings : MonoBehaviour
         List<string> td = new List<string>();
         td.Add("Coins = " + coins);
         td.Add("CpS = " + cps);
+        td.Add("MinCpS = " + minCps);
 
         File.WriteAllLines(path + "settings.ini", td.ToArray());
 
