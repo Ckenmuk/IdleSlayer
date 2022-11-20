@@ -60,14 +60,12 @@ public class ImproveManager : MonoBehaviour
         bbBatLvl = 0;
         rudisLvl = 0;
         swordLvl = 0;
-        SetPlayerPrefs();
     }
 
     private void Start()
     {
-        Reset();
+        //Reset();
 
-        GetPlayerPrefs();
     }
 
     
@@ -78,7 +76,6 @@ public class ImproveManager : MonoBehaviour
         coins = GetComponent<MoneyManager>().coins;
         ShowImprove();
         SetCost();
-        SetPlayerPrefs();
         Debug.Log(coins.ToString());
 
     }
@@ -110,7 +107,7 @@ public class ImproveManager : MonoBehaviour
             fistsLvl += multiplier;
             cps -= minCps;
             minCps -= fistsCps;
-            fistsCps += 0.1f * multiplier;
+            fistsCps += (fistsCost / 100) * multiplier;
             minCps += fistsCps;
             MoneyManager.MinCpsUpdate(minCps);
             cps += minCps;
@@ -136,7 +133,7 @@ public class ImproveManager : MonoBehaviour
             stickLvl += multiplier;
             cps -= minCps;
             minCps -= stickCps;
-            stickCps += 0.1f * multiplier;
+            stickCps += (stickCost / 100) * multiplier;
             minCps += stickCps;
             MoneyManager.MinCpsUpdate(minCps);
             cps += minCps;
@@ -162,7 +159,7 @@ public class ImproveManager : MonoBehaviour
             bbBatLvl += multiplier;
             cps -= minCps;
             minCps -= bbBatCps;
-            bbBatCps += 0.1f * multiplier;
+            bbBatCps += (bbBatCost / 100) * multiplier;
             minCps += bbBatCps;
             MoneyManager.MinCpsUpdate(minCps);
             cps += minCps;
@@ -188,7 +185,7 @@ public class ImproveManager : MonoBehaviour
             rudisLvl += multiplier;
             cps -= minCps;
             minCps -= rudisCps;
-            rudisCps += 0.1f * multiplier;
+            rudisCps += (rudisCost / 100) * multiplier;
             minCps += rudisCps;
             MoneyManager.MinCpsUpdate(minCps);
             cps += minCps;
@@ -214,7 +211,7 @@ public class ImproveManager : MonoBehaviour
             swordLvl += multiplier;
             cps -= minCps;
             minCps -= swordCps;
-            swordCps += 0.1f * multiplier;
+            swordCps += (swordCost / 100) * multiplier;
             minCps += swordCps;
             MoneyManager.MinCpsUpdate(minCps);
             cps += minCps;
@@ -261,50 +258,5 @@ public class ImproveManager : MonoBehaviour
     }
 
 
-    private void SetPlayerPrefs()
-    {
-       /* PlayerPrefs.SetFloat("fistsCost", fistsCost);
-        PlayerPrefs.SetFloat("stickCost", stickCost);
-        PlayerPrefs.SetFloat("bbBatCost", bbBatCost);
-        PlayerPrefs.SetFloat("rudisCost", rudisCost);
-        PlayerPrefs.SetFloat("swordCost", swordCost);
 
-        PlayerPrefs.SetFloat("fistsLvl", fistsLvl);
-        PlayerPrefs.SetFloat("stickLvl", stickLvl);
-        PlayerPrefs.SetFloat("bbBatLvl", bbBatLvl);
-        PlayerPrefs.SetFloat("rudisLvl", rudisLvl);
-        PlayerPrefs.SetFloat("swordLvl", swordLvl);
-
-        PlayerPrefs.SetFloat("fistsCps", fistsCps);
-        PlayerPrefs.SetFloat("stickCps", stickCps);
-        PlayerPrefs.SetFloat("bbBatCps", bbBatCps);
-        PlayerPrefs.SetFloat("rudisCps", rudisCps);
-        PlayerPrefs.SetFloat("swordCps", swordCps);
-        */
-    }
-
-    private void GetPlayerPrefs()
-    {
-     /*   fistsCost = PlayerPrefs.GetFloat("fistsCost");
-        stickCost = PlayerPrefs.GetFloat("stickCost");
-        bbBatCost = PlayerPrefs.GetFloat("bbBatCost");
-        rudisCost = PlayerPrefs.GetFloat("rudisCost");
-        swordCost = PlayerPrefs.GetFloat("swordCost");
-
-        fistsLvl = PlayerPrefs.GetFloat("fistsLvl");
-        stickLvl = PlayerPrefs.GetFloat("stickLvl");
-        bbBatLvl = PlayerPrefs.GetFloat("bbBatLvl");
-        rudisLvl = PlayerPrefs.GetFloat("rudisLvl");
-        swordLvl = PlayerPrefs.GetFloat("swordLvl");
-
-        fistsCps = PlayerPrefs.GetFloat("fistsCps");
-        stickCps = PlayerPrefs.GetFloat("stickCps");
-        bbBatCps = PlayerPrefs.GetFloat("bbBatCps");
-        rudisCps = PlayerPrefs.GetFloat("rudisCps");
-        swordCps = PlayerPrefs.GetFloat("swordCps");
-
-        coins = PlayerPrefs.GetFloat("coins");
-        cps = PlayerPrefs.GetFloat("cps");
-        minCps = PlayerPrefs.GetFloat("minCps");*/
-    }
 }

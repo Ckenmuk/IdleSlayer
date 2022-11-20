@@ -13,6 +13,7 @@ TagManager:
   - Sword
   - Chest
   - Meteor
+  - Invulnerability
   layers:
   - Default
   - TransparentFX

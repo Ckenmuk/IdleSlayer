@@ -147,7 +147,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
+        y: 70
         width: 16
         height: 16
       alignment: 0
@@ -168,7 +168,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 17
-        y: 34
+        y: 70
         width: 16
         height: 16
       alignment: 0
@@ -189,7 +189,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 34
-        y: 34
+        y: 70
         width: 16
         height: 16
       alignment: 0
@@ -210,7 +210,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 17
+        y: 53
         width: 16
         height: 16
       alignment: 0
@@ -231,7 +231,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 17
-        y: 17
+        y: 53
         width: 16
         height: 16
       alignment: 0
@@ -252,7 +252,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 34
-        y: 17
+        y: 53
         width: 16
         height: 16
       alignment: 0
@@ -273,7 +273,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 36
         width: 16
         height: 16
       alignment: 0
@@ -294,7 +294,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 17
-        y: 0
+        y: 36
         width: 16
         height: 16
       alignment: 0
@@ -315,7 +315,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 34
-        y: 0
+        y: 36
         width: 16
         height: 16
       alignment: 0
@@ -331,6 +331,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hit 0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2dbf462d3d3ce41a02dd40575fef1f
+      internalID: -1810037083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit 1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 20
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4abcc302d6eb7c244a13e2f2f1c4fbf7
+      internalID: 131956050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit 2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 20
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d19fd394135b941af4634c6cb9f2d4
+      internalID: -1047491560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit 3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7510739dd8175e34c882dd6c60c477d9
+      internalID: 941467452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -342,12 +426,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Hit 3: 941467452
       Run 0: -2453208753318357113
+      Hit 1: 131956050
       Idle 0: -6447722072507503168
       Jump 0: -5761754228987130096
       Run 2: 5513914976837039818
       Run 3: -434675778434299504
+      Hit 0: -1810037083
       Jump 2: -6086044393419928071
+      Hit 2: -1047491560
       Run 1: 6348790710242686107
       Idle 1: 2962027833772318483
       Jump 1: 5907920678353447086

@@ -41,7 +41,6 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        GetPlayerPrefs();
         if (Time.time > sec)
         {
             AddCoins(cps);
@@ -111,8 +110,7 @@ public class MoneyManager : MonoBehaviour
     public void AddCoins(float cost)
     {
         coins += cost;
-        coins = (float)Math.Round(coins, 2);/*
-        PlayerPrefs.SetFloat("coins", coins);*/
+        coins = (float)Math.Round(coins, 2);
     }
 
     public void Multipier(float mult, bool plus)
@@ -132,9 +130,7 @@ public class MoneyManager : MonoBehaviour
             killed = 0;
         }
 
-        cps = (float)Math.Round(cps, 2);/*
-        PlayerPrefs.SetFloat("cps", cps);
-        PlayerPrefs.SetFloat("killed", killed);*/
+        cps = (float)Math.Round(cps, 2);
     }
 
     public void Bonuses(int i)
@@ -154,12 +150,6 @@ public class MoneyManager : MonoBehaviour
 
     }
 
-    private void GetPlayerPrefs()
-    {/*
-        coins = PlayerPrefs.GetFloat("coins");
-        cps = PlayerPrefs.GetFloat("cps");
-        minCps = PlayerPrefs.GetFloat("minCps");
-        killed = PlayerPrefs.GetFloat("killed");*/
-    }
+   
 
 }
