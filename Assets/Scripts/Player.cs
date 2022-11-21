@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
     [SerializeField] private MoneyManager MoneyManager;
+    [SerializeField] private GameObject InvSphere;
+
 
     public bool hit;
     public bool inv;
@@ -30,10 +32,21 @@ public class Player : MonoBehaviour
         
         GetComponent<Animator>().SetBool("OnHit", hit);
 
+        InvSphere.SetActive(inv);
 
-        directionX = Input.GetAxisRaw("Horizontal");
+        if (FindObjectOfType<SwipeController>().dir > 0)
+        {
+            directionX = 1;
+        }
+        if (FindObjectOfType<SwipeController>().dir < 0)
+        {
+            directionX = -1;
+        }
+
         playerDirection = new Vector2(directionX, 0).normalized;
         rb.velocity = new Vector2(playerDirection.x * playerSpeed, 0);
+
+        transform.localPosition = new Vector3(transform.localPosition.x, -3.5f, 0);
 
         if (rb.position.x < 0)
         {

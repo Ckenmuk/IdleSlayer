@@ -66,7 +66,7 @@ public class MoneyManager : MonoBehaviour
         }
         else if (coins >= 100f && coins < 10000f)
         {
-            coinsText.text = Math.Round(coins, 0).ToString();
+            coinsText.text = ((int)(coins * 10) * 0.1f) + "";
         }
         else
         {
