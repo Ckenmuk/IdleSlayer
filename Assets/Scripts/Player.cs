@@ -5,10 +5,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private MoneyManager MoneyManager;
     [SerializeField] private GameObject InvSphere;
+    [SerializeField] private GameObject CpSPlus;
+    [SerializeField] private GameObject CoinsPlus;
+    [SerializeField] private GameObject PlayerSprite;
 
 
     public bool hit;
     public bool inv;
+    public bool coinsPlus;
 
 
     private Rigidbody2D rb;
@@ -31,8 +35,11 @@ public class Player : MonoBehaviour
     {
         
         GetComponent<Animator>().SetBool("OnHit", hit);
+        GetComponent<Animator>().SetBool("coinsPlus", coinsPlus);
 
         InvSphere.SetActive(inv);
+        CpSPlus.SetActive(hit);
+        CoinsPlus.SetActive(coinsPlus);
 
         if (FindObjectOfType<SwipeController>().dir > 0)
         {
@@ -50,11 +57,11 @@ public class Player : MonoBehaviour
 
         if (rb.position.x < 0)
         {
-            rb.transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
+            PlayerSprite.transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
         }
         else
         {
-            rb.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+            PlayerSprite.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         }
 
         meteorMult = -2 * MoneyManager.cps;
@@ -80,12 +87,15 @@ public class Player : MonoBehaviour
                 break;
             case "BronzeCoin":
                 MoneyManager.AddCoins(coinsCost);
+                coinsPlus = true;
                 break;
             case "SilverCoin":
                 MoneyManager.AddCoins(10 * coinsCost);
+                coinsPlus = true;
                 break;
             case "GoldCoin":
                 MoneyManager.AddCoins(100 * coinsCost);
+                coinsPlus = true;
                 break;
             case "Chest":
                 int i = 1;
@@ -108,6 +118,12 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+    private void ResetCpSPlus()
+    {
+        
+    }
+
 
     private void ResetInvulnerability()
     {

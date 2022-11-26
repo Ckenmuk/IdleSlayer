@@ -76,7 +76,6 @@ public class ImproveManager : MonoBehaviour
         coins = GetComponent<MoneyManager>().coins;
         ShowImprove();
         SetCost();
-        Debug.Log(coins.ToString());
 
     }
 
@@ -100,6 +99,7 @@ public class ImproveManager : MonoBehaviour
 
     public void SetFists()
     {
+        Debug.Log(1);
         if (coins >= fistsCost * multiplier)
         {
             coins -= fistsCost * multiplier;
