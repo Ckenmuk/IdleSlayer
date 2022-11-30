@@ -3,6 +3,8 @@ using UnityEngine;
 public class Shopping : MonoBehaviour
 {
     [SerializeField] GameObject shop;
+    [SerializeField] GameObject closeShop;
+    [SerializeField] GameObject swipeScanner;
     
     private bool isOpen;
 
@@ -14,6 +16,8 @@ public class Shopping : MonoBehaviour
     private void Update()
     {
         shop.SetActive(isOpen);
+        closeShop.SetActive(isOpen);
+        swipeScanner.SetActive(!isOpen);
     }
 
     public void ShopIsOpen()

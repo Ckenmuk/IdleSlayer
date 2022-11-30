@@ -1,27 +1,58 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstaclesSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject[] enemies;
-    [SerializeField] private GameObject[] coins;
-    [SerializeField] private GameObject[] bonuses;
-
+    [SerializeField] private List<UnityEngine.Object> enemies;
+    [SerializeField] private List<UnityEngine.Object> coins;
+    [SerializeField] private List<UnityEngine.Object> bonuses;
+    
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
 
+    private bool enemiesOn;
 
-
-    public float enemiesSpawnFrequency = 0.5f;
-    public float coinsSpawnFrequency = 2.0f;
-    public float bonusesSpawnFrequency = 10.0f;
+    public float coinsSpawnDelay = 2.0f;
+    public float enemiesSpawnDelay = 5.0f;
+    public float bonusesSpawnDelay = 30.0f;
 
     private float enemySpawnTime;
     private float coinsSpawnTime;
     private float bonusesSpawnTime;
     
+    public void EnemiesOn()
+    {
+        enemiesOn = true;
+    }
+
+    public void SilverCoinsOn()
+    {
+        if(coins.Count < 2)
+        {
+            coins.Add(Resources.Load("Prefab/SilverCoin"));
+        }
+    }
+
+    public void GoldCoinsOn()
+    {
+        if (coins.Count > 1 && coins.Count < 3)
+        {
+            coins.Add(Resources.Load("Prefab/GoldCoin"));
+        }
+    }
+
+    public void BossesOn()
+    {
+        if (enemies.Count < 2)
+        {
+            enemies.Add(Resources.Load("Prefab/Enemy Boss"));
+            enemies.Add(Resources.Load("Prefab/Sword"));
+            enemies.Add(Resources.Load("Prefab/Meteor"));
+        }
+    }
 
     private void Update()
     {
@@ -30,24 +61,24 @@ public class ObstaclesSpawn : MonoBehaviour
 
     private void Timer()
     {
-        if (Time.time > enemySpawnTime)
+        if (enemiesOn && Time.time > enemySpawnTime)
         {
             Spawn(enemies);
-            enemySpawnTime = Time.time + enemiesSpawnFrequency;
+            enemySpawnTime = Time.time + enemiesSpawnDelay;
         }
         if (Time.time > coinsSpawnTime)
         {
             Spawn(coins);
-            coinsSpawnTime = Time.time + coinsSpawnFrequency;
+            coinsSpawnTime = Time.time + coinsSpawnDelay;
         }
         if (Time.time > bonusesSpawnTime)
         {
             Spawn(bonuses);
-            bonusesSpawnTime = Time.time + bonusesSpawnFrequency;
+            bonusesSpawnTime = Time.time + bonusesSpawnDelay;
         }
     }
 
-    private void Spawn(GameObject[] spawnObject)
+    private void Spawn(List<UnityEngine.Object> spawnObject)
     {
         float randomX = UnityEngine.Random.Range(minX, maxX);
         float randomY = UnityEngine.Random.Range(minY, maxY);
@@ -55,7 +86,7 @@ public class ObstaclesSpawn : MonoBehaviour
         int randomObject = 0;
 
         
-        for (int j = spawnObject.Length; j >= 0; j--)
+        for (int j = spawnObject.Count; j >= 0; j--)
         {
             if (UnityEngine.Random.Range(0, (float)Math.Pow(10, j)) < 5)
             {
@@ -64,17 +95,7 @@ public class ObstaclesSpawn : MonoBehaviour
             }
         }
 
-        Instantiate(spawnObject[randomObject], transform.position + new Vector3(randomX, randomY, 0.0f), transform.rotation);
-
-        /*       if (randomX > 0)
-               {
-                   spawnObject[randomObject].transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
-               }
-               else
-               {
-                   spawnObject[randomObject].transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
-               }
-       */
+        Instantiate(spawnObject[randomObject], transform.position + new Vector3(randomX, randomY, 0.0f), transform.rotation, GameObject.Find("GameManager").transform);
 
     }
 

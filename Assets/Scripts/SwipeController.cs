@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class SwipeController : MonoBehaviour, IPointerMoveHandler
+public class SwipeController : MonoBehaviour//, IPointerMoveHandler
 {
     public float dir;
+    [SerializeField] private TMP_Text test;
 
     public float touchPosition;
-    private Vector3 touchStart;
-    private Vector3 touchEnd;
+    private Vector2 touchStart;
+    private Vector2 touchEnd;
     private Touch touch;
 
     private void Update()
@@ -22,24 +24,19 @@ public class SwipeController : MonoBehaviour, IPointerMoveHandler
 
         if (touch.phase == TouchPhase.Began)
         {
-            touchStart = touch.position;
+            touchStart = new Vector2(touch.position.x - Screen.width / 2.0f, touch.position.y);
+            test.text = touchStart.x + "";
         }
 
         if (touch.phase == TouchPhase.Ended)
         {
-            touchEnd = touch.position;
+            touchEnd = new Vector2(touch.position.x - Screen.width / 2.0f, touch.position.y);
+            test.text = touchEnd.x + "";
         }
 
-        if (touchStart.x > touchEnd.x)
-        {
-            touchPosition = -1;
-        }
-        if (touchStart.x < touchEnd.x)
-        {
-            touchPosition = 1;
-        }
+        dir = touchEnd.x - touchStart.x;
     }
 
-    void IPointerMoveHandler.OnPointerMove(PointerEventData eventData) { dir = Input.mousePosition.x - Screen.width / 2; }
+    //void IPointerMoveHandler.OnPointerMove(PointerEventData eventData) { dir = Input.mousePosition.x - Screen.width / 2; }
 
 }

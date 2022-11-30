@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private float directionX;
 
     private float coinsCost = 1.0f;
-    private float enemyMult = .01f;
+    private float enemyMult = 0.01f;
     private float bossMult = .1f;
     private float swordMult = -1.0f;
     private float meteorMult;
@@ -41,11 +41,11 @@ public class Player : MonoBehaviour
         CpSPlus.SetActive(hit);
         CoinsPlus.SetActive(coinsPlus);
 
-        if (FindObjectOfType<SwipeController>().dir > 0)
+        if (FindObjectOfType<SwipeController>().dir > 0 || Input.GetKey(KeyCode.D))
         {
             directionX = 1;
         }
-        if (FindObjectOfType<SwipeController>().dir < 0)
+        if (FindObjectOfType<SwipeController>().dir < 0 || Input.GetKey(KeyCode.A))
         {
             directionX = -1;
         }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
+    private Settings settings;
+
     public float cps { get; private set; }
     public float coins { get; private set; }
     public float minCps { get; private set; }
@@ -12,15 +14,10 @@ public class MoneyManager : MonoBehaviour
     private float killed;
     private float sec;
 
-    public float t, tmax;
-    public float speed;
-
     [SerializeField] private TMP_Text cpsText;
     [SerializeField] private TMP_Text coinsText;
     [SerializeField] private TMP_Text killedText;
     [SerializeField] private ObstaclesSpawn spawn;
-
-    private Settings settings;
 
     private void Start()
     {
@@ -30,7 +27,6 @@ public class MoneyManager : MonoBehaviour
         cps = settings.cps;
         minCps = settings.minCps;
 
-        t = tmax;
     }
 
     private void OnApplicationQuit()
@@ -53,41 +49,28 @@ public class MoneyManager : MonoBehaviour
         }
         else if (cps >= 100f && cps < 1000f)
         {
-            cpsText.text = Math.Round(cps, 0).ToString() + " CpS";
+            cpsText.text = Math.Round(cps, 0) + " CpS";
         }
         else
         {
-            cpsText.text = cps.ToString() + " CpS";
+            cpsText.text = Math.Round(cps, 2) + " CpS";
         }
 
-        if (coins >= 10000f)
+        if (coins >= 1000f)
         {
             coinsText.text = coins.ToString("e2", CultureInfo.InvariantCulture);
         }
-        else if (coins >= 100f && coins < 10000f)
+        else if (coins >= 100f && coins < 1000f)
         {
             coinsText.text = ((int)(coins * 10) * 0.1f) + "";
         }
         else
         {
-            coinsText.text = coins.ToString();
+            coinsText.text = Math.Round(coins, 2) + "";
         }
-        killedText.text = killed.ToString() + " killed";
+        killedText.text = killed + " killed";
 
 
-        if(t <= 0)
-        {
-            settings.coins = coins;
-            settings.cps = cps;
-            settings.minCps = minCps;
-            settings.WriteNewSettings();
-
-            t = tmax;
-        }
-        else
-        {
-            t -= Time.deltaTime * speed;
-        }
 
 
     }
@@ -137,16 +120,16 @@ public class MoneyManager : MonoBehaviour
     {
         if (i == 1)
         {
-            spawn.coinsSpawnFrequency /= 100;
+            spawn.coinsSpawnDelay /= 100;
             Invoke(nameof(BonusDeactivating), 5.0f);
         }
     }
 
     private void BonusDeactivating()
     {
-        spawn.enemiesSpawnFrequency = 0.5f;
-        spawn.coinsSpawnFrequency = 2.0f;
-        spawn.bonusesSpawnFrequency = 10.0f;
+        spawn.enemiesSpawnDelay = 0.5f;
+        spawn.coinsSpawnDelay = 2.0f;
+        spawn.bonusesSpawnDelay = 10.0f;
 
     }
 
