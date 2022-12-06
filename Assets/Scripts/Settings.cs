@@ -26,7 +26,8 @@ public class Settings : MonoBehaviour
 
     public string path;
 
-    private string[] data = new string[0];
+    public string[] data { get; private set; } = new string[0];
+    public string[] effects;
 
     [System.Obsolete]
     void Start()
@@ -77,9 +78,10 @@ public class Settings : MonoBehaviour
         data = File.ReadAllLines(path + "settings.ini");
         for (int i = 0; i < data.ToList().IndexOf("effects begin"); i++)
         {
-            datas[i] = (float)(double.Parse(data[i].Remove(0, data[i].IndexOf("=") + 2)));
+            datas[i] = (float)double.Parse(data[i].Remove(0, data[i].IndexOf("=") + 2));
         }
 
+        effects = File.ReadAllLines(path + "Adds.ini");
         for (int i = data.ToList().IndexOf("effects begin") + 1; i < data.ToList().IndexOf("effects end"); i++)
         {
             //искать первый, второй и третий разделители
@@ -106,7 +108,7 @@ public class Settings : MonoBehaviour
         Read();
     }
 
-    public void WriteNewSettings(float coins, float cps, float min_cps, List<string> effects)
+    public void WriteNewSettings(float coins, float cps, float min_cps)
     {
         List<string> td = new List<string>();
 
@@ -116,7 +118,7 @@ public class Settings : MonoBehaviour
 
         string WriteEffects = "";
 
-        for (int i = 0; i < effects.Count; i++) { WriteEffects += effects + "\n"; }
+        for (int i = 0; i < effects.Length; i++) { WriteEffects += effects[i] + "\n"; }
 
         td.Add("effects begin");
         td.Add(WriteEffects);
