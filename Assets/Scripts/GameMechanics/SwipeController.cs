@@ -5,7 +5,7 @@ using TMPro;
 
 public class SwipeController : MonoBehaviour//, IPointerMoveHandler
 {
-    public float dir;
+    public float dir = 0;
     [SerializeField] private TMP_Text test;
 
     public float touchPosition;

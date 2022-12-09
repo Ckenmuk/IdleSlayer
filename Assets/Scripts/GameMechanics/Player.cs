@@ -2,31 +2,41 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed;
     [SerializeField] private MoneyManager MoneyManager;
+
     [SerializeField] private GameObject InvSphere;
     [SerializeField] private GameObject CpSPlus;
     [SerializeField] private GameObject CoinsPlus;
     [SerializeField] private GameObject PlayerSprite;
+
     [SerializeField] private GameObject CoinsAudio;
     [SerializeField] private GameObject swordAudio;
+
+    [SerializeField] GameObject SwipeScanner;
+
+    private float playerSpeed = 50;
+
+    private Rigidbody2D rb;
+    private Vector2 playerDirection;
+    private float directionX = 0;
 
     public bool swordHit;
     public bool hit;
     public bool inv;
     public bool coinsPlus;
 
-
-    private Rigidbody2D rb;
-    private Vector2 playerDirection;
-    private float directionX;
-
-    private float coinsCost = 1.0f;
+    public float coinsCost = 1.0f;
     private float enemyMult = 0.01f;
     private float bossMult = .1f;
     private float swordMult = -1.0f;
     private float meteorMult;
     private float invulnerability = 1;
+
+
+    public void CoinsCost(float value)
+    {
+        coinsCost *= value;
+    }
 
     private void Start()
     {
@@ -46,13 +56,25 @@ public class Player : MonoBehaviour
         CoinsAudio.SetActive(coinsPlus);
         swordAudio.SetActive(swordHit);
 
-        if (FindObjectOfType<SwipeController>().dir > 0 || Input.GetKey(KeyCode.D))
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    directionX = 1;
+        //}
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    directionX = -1;
+        //}
+
+        if (SwipeScanner.activeInHierarchy)
         {
-            directionX = 1;
-        }
-        if (FindObjectOfType<SwipeController>().dir < 0 || Input.GetKey(KeyCode.A))
-        {
-            directionX = -1;
+            if (FindObjectOfType<SwipeController>().dir > 0 || Input.GetKey(KeyCode.D))
+            {
+                directionX = 1;
+            }
+            if (FindObjectOfType<SwipeController>().dir < 0 || Input.GetKey(KeyCode.A))
+            {
+                directionX = -1;
+            }
         }
 
         playerDirection = new Vector2(directionX, 0).normalized;
@@ -68,6 +90,8 @@ public class Player : MonoBehaviour
         {
             PlayerSprite.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
         }
+        
+        
 
         meteorMult = -2 * MoneyManager.cps;
     }

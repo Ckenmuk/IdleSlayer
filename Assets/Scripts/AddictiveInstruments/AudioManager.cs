@@ -5,7 +5,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private GameObject CoinCollect;
     [SerializeField] private GameObject SwordHit;
     [SerializeField] private GameObject EnemyKill;
-
     [SerializeField] private AudioSource MainTheme;
 
 

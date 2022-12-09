@@ -29,10 +29,6 @@ public class MoneyManager : MonoBehaviour
 
     }
 
-    private void OnApplicationQuit()
-    {
-
-    }
 
 
     private void Update()
@@ -70,9 +66,6 @@ public class MoneyManager : MonoBehaviour
         }
         killedText.text = killed + " killed";
 
-
-
-
     }
 
     public void CoinsUpdate(float coins)
@@ -96,6 +89,18 @@ public class MoneyManager : MonoBehaviour
         coins = (float)Math.Round(coins, 2);
     }
 
+    public void GainCpS(float value)
+    {
+        if (minCps > 0)
+        {
+            minCps *= value;
+        }
+        else
+        {
+            minCps = 0.5f;
+        }
+
+    }
     public void Multipier(float mult, bool plus)
     {
         cps += mult;
@@ -127,8 +132,9 @@ public class MoneyManager : MonoBehaviour
 
     private void BonusDeactivating()
     {
+        // FIX IT!!!!!!!!!!!!!!!
         spawn.enemiesSpawnDelay = 0.5f;
-        spawn.coinsSpawnDelay = 2.0f;
+        spawn.coinsSpawnDelay *= 100;
         spawn.bonusesSpawnDelay = 10.0f;
 
     }

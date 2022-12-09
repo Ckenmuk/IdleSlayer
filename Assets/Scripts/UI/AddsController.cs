@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AddsController : MonoBehaviour
 {
-    [SerializeField] GameObject Content;
+    public GameObject Content;
 
     public float cellHeigth;
     public float spacing;

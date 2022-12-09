@@ -761,7 +761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29114c8c60755e4d94a9252480339eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 50
   MoneyManager: {fileID: 204891578}
   InvSphere: {fileID: 1602159342}
   CpSPlus: {fileID: 2101283968}
@@ -769,10 +768,12 @@ MonoBehaviour:
   PlayerSprite: {fileID: 2119140629}
   CoinsAudio: {fileID: 1206009615}
   swordAudio: {fileID: 1438843030}
+  SwipeScanner: {fileID: 1449300137}
   swordHit: 0
   hit: 0
   inv: 0
   coinsPlus: 0
+  coinsCost: 1
 --- !u!58 &59197078
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1885,6 +1886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects: []
   MoneyManager: {fileID: 204891578}
+  ContentFilling: {fileID: 0}
   Improves:
   - {fileID: 1027198886}
   - {fileID: 1012474743}
@@ -5453,6 +5455,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyManager: {fileID: 204891578}
+  AddPanel: {fileID: 5863576647214959190, guid: 5f200eba6570ecb4ab242147350737a9, type: 3}
+  Titles: []
+  Costs: []
+  Texts: []
+  Methods: []
+  Values: []
 --- !u!1 &893943705
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,6 +8662,7 @@ GameObject:
   - component: {fileID: 1531830773}
   - component: {fileID: 1531830775}
   - component: {fileID: 1531830774}
+  - component: {fileID: 1531830776}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -8681,7 +8690,7 @@ RectTransform:
   m_AnchorMax: {x: 0.95, y: 0.98}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1531830774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8720,6 +8729,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531830772}
   m_CullTransparentMesh: 1
+--- !u!114 &1531830776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531830772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1549050620
 GameObject:
   m_ObjectHideFlags: 0

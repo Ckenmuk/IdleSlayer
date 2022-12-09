@@ -121,9 +121,9 @@ public class Settings : MonoBehaviour
         for (int i = 0; i < effects.Length; i++) { WriteEffects += effects[i] + "\n"; }
 
         td.Add("effects begin");
-        td.Add(WriteEffects);
+        td.Add(WriteEffects.Remove(WriteEffects.Length - 2));
         td.Add("effects end");
-
+        
 
         File.WriteAllLines(path + "settings.ini", td.ToArray());
 
