@@ -93,7 +93,9 @@ public class MoneyManager : MonoBehaviour
     {
         if (minCps > 0)
         {
+            cps -= minCps;
             minCps *= value;
+            cps += minCps;
         }
         else
         {

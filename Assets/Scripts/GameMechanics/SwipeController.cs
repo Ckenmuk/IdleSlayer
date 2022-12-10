@@ -28,7 +28,7 @@ public class SwipeController : MonoBehaviour//, IPointerMoveHandler
             test.text = touchStart.x + "";
         }
 
-        if (touch.phase == TouchPhase.Ended)
+        if (touch.phase == TouchPhase.Moved)
         {
             touchEnd = new Vector2(touch.position.x - Screen.width / 2.0f, touch.position.y);
             test.text = touchEnd.x + "";

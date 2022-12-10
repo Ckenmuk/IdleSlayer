@@ -27,11 +27,29 @@ public class Settings : MonoBehaviour
     public string path;
 
     public string[] data { get; private set; } = new string[0];
-    public string[] effects;
+    public List<string> effects;
 
     [System.Obsolete]
     void Start()
     {
+        effects.Add("Add 1 ; 40 ; More coins appear ; CoinsSpawnDelay ; 1,5");
+        effects.Add("Add 2 ; 80 ; Gain 100 % bonus CpS ; GainCpS; 2");
+        effects.Add("Add 3 ; 200 ; Enemies appear. CpS for kill = 0, 01 ; EnemiesOn ; 1");
+        effects.Add("Add 4 ; 800 ; Silver coins appear.Cost = 10 ; SilverCoinsOn ; 1");
+        effects.Add("Add 5 ; 5120 ; Gain 2 % bonus CpS ; GainCpS ; 1,02");
+        effects.Add("Add 6 ; 10000 ; Bosses appear. CpS = 0.1.BE CAREFUL He brings destructions ; BossesOn ; 1");
+        effects.Add("Add 7 ; 30000 ; Increase 5 % coins value ; CoinsCost ; 1,05");
+        effects.Add("Add 8 ; 32000 ; More enemies ; EnemiesSpawnDelay ; 1,5");
+        effects.Add("Add 9 ; 40000 ; New bonus: Chest.Cointain random improve ; BonusesOn ; 1");
+        effects.Add("Add 10 ; 200000 ; Gain 20 % bonus CpS ; GainCpS ; 1,2");
+        effects.Add("Add 11 ; 30640000 ; More coins appear ; CoinsSpawnDelay ; 1,1");
+        effects.Add("Add 12 ; 400000000 ; Gold coins appear.Cost = 100 ; GoldCoinsOn ; 1");
+        effects.Add("Add 13 ; 2000000000 ; More enemies ; EnemiesSpawnDelay ; 1,1");
+        effects.Add("Add 14 ; 2000000000 ; Increase 10 % coins value ; CoinsCost ; 1,1");
+        effects.Add("Add 15 ; 2280000000 ; New bonus: Invulnerability.Swords and meteors aren't so scary anymore ; InvulnerabilityOn ; 1");
+        effects.Add("Add 16 ; 14200000000 ; Gain 50 % bonus CpS ; GainCpS ; 1,5");
+
+
         datas = new float[]
         {
             coins,
@@ -54,7 +72,7 @@ public class Settings : MonoBehaviour
 
         if (path.Length == 0)
         {
-            path = Application.dataPath + "/";
+            path = Application.persistentDataPath + "/";
         }
 
         if (File.Exists(path + "settings.ini"))
@@ -81,12 +99,6 @@ public class Settings : MonoBehaviour
             datas[i] = (float)double.Parse(data[i].Remove(0, data[i].IndexOf("=") + 2));
         }
 
-        effects = File.ReadAllLines(path + "Adds.ini");
-        for (int i = data.ToList().IndexOf("effects begin") + 1; i < data.ToList().IndexOf("effects end"); i++)
-        {
-            //искать первый, второй и третий разделители
-        }
-
     }
 
     private void WriteDefault()
@@ -97,9 +109,11 @@ public class Settings : MonoBehaviour
         td.Add("cps = 0");
         td.Add("minCps = 0");
 
-        //effectname = levl = cost = cps
         td.Add("effects begin");
-        td.Add("");
+        for (int i = 0; i < effects.Count; i++)
+        {
+            td.Add(effects[i]);
+        }
         td.Add("effects end");
         
 
@@ -116,14 +130,12 @@ public class Settings : MonoBehaviour
         td.Add($"cps = {cps}");
         td.Add($"minCps = { min_cps}");
 
-        string WriteEffects = "";
-
-        for (int i = 0; i < effects.Length; i++) { WriteEffects += effects[i] + "\n"; }
-
         td.Add("effects begin");
-        td.Add(WriteEffects.Remove(WriteEffects.Length - 2));
+        for (int i = 0; i < effects.Count; i++)
+        {
+            td.Add(effects[i]);
+        }
         td.Add("effects end");
-        
 
         File.WriteAllLines(path + "settings.ini", td.ToArray());
 

@@ -56,15 +56,6 @@ public class Player : MonoBehaviour
         CoinsAudio.SetActive(coinsPlus);
         swordAudio.SetActive(swordHit);
 
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    directionX = 1;
-        //}
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    directionX = -1;
-        //}
-
         if (SwipeScanner.activeInHierarchy)
         {
             if (FindObjectOfType<SwipeController>().dir > 0 || Input.GetKey(KeyCode.D))
@@ -82,7 +73,7 @@ public class Player : MonoBehaviour
 
         transform.localPosition = new Vector3(transform.localPosition.x, -3.5f, 0);
 
-        if (rb.position.x < 0)
+        if (rb.transform.localPosition.x < 0)
         {
             PlayerSprite.transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
         }

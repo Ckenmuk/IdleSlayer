@@ -79,7 +79,7 @@ public class ImproveManager : MonoBehaviour
 
         for (int i = 0; i < Costs.Length; i++)
         {
-            if (coins >= Costs[i])
+            if (coins >= 0.9 * Costs[i])
             {
                 Improves[i].SetActive(true);
             }
@@ -92,7 +92,7 @@ public class ImproveManager : MonoBehaviour
 
         for (int i = 0; i < Costs.Length; i++)
         {
-            if (Costs[i] * multiplier >= 10000f)
+            if (Costs[i] * multiplier >= 1000f)
             {
                 ButtonTexts[i].text = (Costs[i] * multiplier).ToString("e2", CultureInfo.InvariantCulture);
             }

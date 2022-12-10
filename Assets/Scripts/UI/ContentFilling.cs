@@ -9,6 +9,8 @@ public class ContentFilling : MonoBehaviour
 {
     [SerializeField] private MoneyManager MoneyManager;
     [SerializeField] private GameObject AddPanel;
+    
+    
     private GameObject Content;
 
     private string[] data;
@@ -21,23 +23,12 @@ public class ContentFilling : MonoBehaviour
     private string startRemove;
     private string endRemove;
 
-    private float cps;
-    private float minCps;
-    private float coins;
-
 
     private void Start()
     {
         data = FindObjectOfType<Settings>().data;
         Content = GetComponent<AddsController>().Content;
         ReadSettings();
-    }
-
-    void Update()
-    {
-        cps = GetComponent<MoneyManager>().cps;
-        minCps = GetComponent<MoneyManager>().minCps;
-        coins = GetComponent<MoneyManager>().coins;
     }
 
     private void ReadSettings()
@@ -80,7 +71,7 @@ public class ContentFilling : MonoBehaviour
             GameObject to = Instantiate(AddPanel);
             to.name = Titles[i];
             to.transform.GetChild(1).GetComponent<TMP_Text>().text = Texts[i];
-            if (Costs[i] >= 10000)
+            if (Costs[i] >= 1000)
             {
                 to.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = Costs[i].ToString("e2", CultureInfo.InvariantCulture);
             }
@@ -88,6 +79,7 @@ public class ContentFilling : MonoBehaviour
             {
                 to.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = Costs[i].ToString("f0", CultureInfo.InvariantCulture);
             }
+            to.GetComponent<AddAddative>().cost = Costs[i];
             to.GetComponent<AddAddative>().title = Titles[i];
             to.GetComponent<AddAddative>().value = Values[i];
             to.transform.position = Content.transform.position;
