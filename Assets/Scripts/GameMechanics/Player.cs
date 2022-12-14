@@ -9,9 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject CoinsPlus;
     [SerializeField] private GameObject PlayerSprite;
 
-    [SerializeField] private GameObject CoinsAudio;
-    [SerializeField] private GameObject swordAudio;
-
     [SerializeField] GameObject SwipeScanner;
 
     private float playerSpeed = 50;
@@ -53,8 +50,7 @@ public class Player : MonoBehaviour
         InvSphere.SetActive(inv);
         CpSPlus.SetActive(hit);
         CoinsPlus.SetActive(coinsPlus);
-        CoinsAudio.SetActive(coinsPlus);
-        swordAudio.SetActive(swordHit);
+
 
         if (SwipeScanner.activeInHierarchy)
         {
@@ -71,7 +67,7 @@ public class Player : MonoBehaviour
         playerDirection = new Vector2(directionX, 0).normalized;
         rb.velocity = new Vector2(playerDirection.x * playerSpeed, 0);
 
-        transform.localPosition = new Vector3(transform.localPosition.x, -3.5f, 0);
+        transform.localPosition = new Vector3(transform.localPosition.x, -5f, 0);
 
         if (rb.transform.localPosition.x < 0)
         {

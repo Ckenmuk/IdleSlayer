@@ -107,9 +107,9 @@ public class ObstaclesSpawn : MonoBehaviour
         int randomObject = 0;
 
         
-        for (int j = spawnObject.Count; j >= 0; j--)
+        for (int j = spawnObject.Count - 1; j > 0; j--)
         {
-            if (UnityEngine.Random.Range(0, (float)Math.Pow(10, j)) < 5)
+            if ((int)UnityEngine.Random.Range(0, (float)Math.Pow(10, j)) < 5)
             {
                 randomObject = j;
                 break;

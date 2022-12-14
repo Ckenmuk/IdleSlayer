@@ -48,6 +48,12 @@ public class Settings : MonoBehaviour
         effects.Add("Add 14 ; 2000000000 ; Increase 10 % coins value ; CoinsCost ; 1,1");
         effects.Add("Add 15 ; 2280000000 ; New bonus: Invulnerability.Swords and meteors aren't so scary anymore ; InvulnerabilityOn ; 1");
         effects.Add("Add 16 ; 14200000000 ; Gain 50 % bonus CpS ; GainCpS ; 1,5");
+        effects.Add("Add 17 ; 82000000000 ; Collect resourses, if game is closed ; IfGameClosed ; 1");
+        effects.Add("Add 18 ; 400000000000 ; All weapon gives 100% more CpS ; WeaponUpgrade ; 2");
+        effects.Add("Add 19 ; 10000000000000 ; Chest upgrade. Contains more coins ; ChestUpgrade ; 1,5");
+        effects.Add("Add 20 ; 40000000000000 ; Increase 20% coins value ; CoinsCost ; 1,2");
+        effects.Add("Add 21 ; 51200000000000 ; More enemies ; EnemiesSpawnDelay ; 1,5");
+        effects.Add("Add 22 ; 100000000000000 ; You're ultra killer! ; TalentsOn ; 1");
 
 
         datas = new float[]

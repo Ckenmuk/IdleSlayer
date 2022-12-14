@@ -123,6 +123,11 @@ public class MoneyManager : MonoBehaviour
         cps = (float)Math.Round(cps, 2);
     }
 
+    public void IfGameClosed()
+    {
+
+    }
+
     public void Bonuses(int i)
     {
         if (i == 1)

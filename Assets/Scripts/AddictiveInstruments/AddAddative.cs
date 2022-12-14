@@ -11,6 +11,8 @@ public class AddAddative : MonoBehaviour
         ObstaclesSpawn obstaclesSpawn = FindObjectOfType<ObstaclesSpawn>();
         MoneyManager moneyManager = FindObjectOfType<MoneyManager>();
         Player player = FindObjectOfType<Player>();
+        ImproveManager improveManager = FindObjectOfType<ImproveManager>();
+
         if (moneyManager.coins >= cost)
         {
             moneyManager.AddCoins(-cost);
@@ -29,7 +31,7 @@ public class AddAddative : MonoBehaviour
                     obstaclesSpawn.SilverCoinsOn();
                     break;
                 case "Add 5":
-                    moneyManager.GainCpS(1.02f);
+                    moneyManager.GainCpS(value);
                     break;
                 case "Add 6":
                     obstaclesSpawn.BossesOn();
@@ -42,6 +44,33 @@ public class AddAddative : MonoBehaviour
                     break;
                 case "Add 9":
                     obstaclesSpawn.BonusesOn();
+                    break;
+                case "Add 10":
+                    moneyManager.GainCpS(value);
+                    break;
+                case "Add 11":
+                    obstaclesSpawn.CoinsSpawnDelay(value);
+                    break;
+                case "Add 12":
+                    obstaclesSpawn.GoldCoinsOn();
+                    break;
+                case "Add 13":
+                    obstaclesSpawn.EnemiesSpawnDelay(value);
+                    break;
+                case "Add 14":
+                    player.CoinsCost(value);
+                    break;
+                case "Add 15":
+                    obstaclesSpawn.InvulnerabilityOn();
+                    break;
+                case "Add 16":
+                    moneyManager.GainCpS(value);
+                    break;
+                case "Add 17":
+                    moneyManager.IfGameClosed();
+                    break;
+                case "Add 18":
+                    improveManager.WeaponUpgrade(value);
                     break;
 
                 default:

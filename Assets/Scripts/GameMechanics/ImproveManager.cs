@@ -73,6 +73,10 @@ public class ImproveManager : MonoBehaviour
         SettingsUpdate();
     }
 
+    public void WeaponUpgrade(float value)
+    {
+
+    }
     private void ShowImprove()
     {
         float[] Costs = { fistsCost, stickCost, bbBatCost, rudisCost, swordCost, axeCost, hammerCost };
