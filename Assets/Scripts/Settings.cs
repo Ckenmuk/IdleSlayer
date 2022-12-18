@@ -75,6 +75,7 @@ public class Settings : MonoBehaviour
             swordCps
         };
         Application.DontDestroyOnLoad(gameObject);
+        Application.runInBackground = true;
 
         if (path.Length == 0)
         {
@@ -86,11 +87,11 @@ public class Settings : MonoBehaviour
             Read();
         }
 
-        SceneManager.LoadScene(1);
     }
 
     private void Update()
     {
+        Debug.Log(System.DateTime.Now.DayOfWeek);
 
         if (!File.Exists(path + "settings.ini"))
         {
@@ -146,5 +147,10 @@ public class Settings : MonoBehaviour
         File.WriteAllLines(path + "settings.ini", td.ToArray());
 
         Read();
+    }
+
+    public void LoadScene(string nameScene)
+    {
+        SceneManager.LoadScene(nameScene);
     }
 }

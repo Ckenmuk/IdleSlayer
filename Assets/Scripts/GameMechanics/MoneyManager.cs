@@ -14,6 +14,12 @@ public class MoneyManager : MonoBehaviour
     private float killed;
     private float sec;
 
+    private float chestUpdate = 1.0f;
+
+    private float esd;
+    private float csd;
+    private float bsd;
+
     [SerializeField] private TMP_Text cpsText;
     [SerializeField] private TMP_Text coinsText;
     [SerializeField] private TMP_Text killedText;
@@ -130,22 +136,37 @@ public class MoneyManager : MonoBehaviour
 
     public void Bonuses(int i)
     {
-        if (i == 1)
+        esd = spawn.enemiesSpawnDelay;
+        csd = spawn.coinsSpawnDelay;
+        bsd = spawn.bonusesSpawnDelay;
+
+        switch (i)
         {
-            spawn.coinsSpawnDelay /= 100;
-            Invoke(nameof(BonusDeactivating), 5.0f);
+            case 1:
+                spawn.coinsSpawnDelay /= 100 * chestUpdate;
+                break;
+            case 2:
+                spawn.enemiesSpawnDelay /= 10 * chestUpdate;
+                break;
+            default:
+                break;
         }
+
+        Invoke(nameof(BonusDeactivating), 5.0f);
     }
 
     private void BonusDeactivating()
     {
-        // FIX IT!!!!!!!!!!!!!!!
-        spawn.enemiesSpawnDelay = 0.5f;
-        spawn.coinsSpawnDelay *= 100;
-        spawn.bonusesSpawnDelay = 10.0f;
+        spawn.enemiesSpawnDelay = esd;
+        spawn.coinsSpawnDelay = csd;
+        spawn.bonusesSpawnDelay = bsd;
 
     }
 
-   
+    public void ChestUpgrade(float value)
+    {
+        chestUpdate *= value;
+    }
+
 
 }

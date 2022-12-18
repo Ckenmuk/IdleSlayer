@@ -12,7 +12,6 @@ public class GraphicsController : MonoBehaviour
         ScreenSize = new Vector2(Screen.width, Screen.height);
         GetComponent<CanvasScaler>().referenceResolution = ScreenSize;
         definition = ScreenSize.x / ScreenSize.y;
-        Debug.Log(definition);
         if (Mathf.Abs(definition - 0.5625f) < 0.01)
         {
             transform.GetChild(0).localScale = scales[0];

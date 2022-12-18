@@ -75,7 +75,13 @@ public class ImproveManager : MonoBehaviour
 
     public void WeaponUpgrade(float value)
     {
-
+        fistsCps *= value;
+        stickCps *= value;
+        bbBatCps *= value;
+        rudisCps *= value;
+        swordCps *= value;
+        axeCps *= value;
+        hammerCps *= value;
     }
     private void ShowImprove()
     {

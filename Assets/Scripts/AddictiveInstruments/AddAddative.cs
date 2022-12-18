@@ -72,6 +72,18 @@ public class AddAddative : MonoBehaviour
                 case "Add 18":
                     improveManager.WeaponUpgrade(value);
                     break;
+                case "Add 19":
+                    moneyManager.ChestUpgrade(value);
+                    break;
+                case "Add 20":
+                    player.CoinsCost(value);
+                    break;
+                case "Add 21":
+                    obstaclesSpawn.EnemiesSpawnDelay(value);
+                    break;
+                case "Add 22":
+                    // TalentsOn();
+                    break;
 
                 default:
                     break;

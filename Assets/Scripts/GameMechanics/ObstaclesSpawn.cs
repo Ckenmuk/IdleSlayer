@@ -24,6 +24,10 @@ public class ObstaclesSpawn : MonoBehaviour
     private float coinsSpawnTime;
     private float bonusesSpawnTime;
     
+
+
+
+
     public void CoinsSpawnDelay(float value)
     {
         coinsSpawnDelay /= value;

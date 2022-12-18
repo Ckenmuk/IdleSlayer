@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 playerDirection;
-    private float directionX = 0;
+    private float directionX = -1;
 
     public bool swordHit;
     public bool hit;
@@ -35,6 +35,28 @@ public class Player : MonoBehaviour
         coinsCost *= value;
     }
 
+    private void CpSCollect()
+    {
+        CpSPlus.SetActive(true);
+        Invoke(nameof(CpSMinus), .2f);
+    }
+
+    private void CpSMinus()
+    {
+        CpSPlus.SetActive(false);
+    }
+
+    private void CoinsCollect()
+    {
+        CoinsPlus.SetActive(true);
+        Invoke(nameof(CoinsMinus), .2f);
+    }
+
+    private void CoinsMinus()
+    {
+        CoinsPlus.SetActive(false);
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,8 +70,8 @@ public class Player : MonoBehaviour
         GetComponent<Animator>().SetBool("swordHit", swordHit);
 
         InvSphere.SetActive(inv);
-        CpSPlus.SetActive(hit);
-        CoinsPlus.SetActive(coinsPlus);
+
+
 
 
         if (SwipeScanner.activeInHierarchy)
@@ -90,10 +112,12 @@ public class Player : MonoBehaviour
             case "Enemy":
                 MoneyManager.Multipier(enemyMult, true);
                 hit = true;
+                CpSCollect();
                 break;
             case "Boss":
                 MoneyManager.Multipier(bossMult, true);
                 hit = true;
+                CpSCollect();
                 break;
             case "Sword":
                 MoneyManager.Multipier(swordMult * invulnerability, false);
@@ -104,15 +128,15 @@ public class Player : MonoBehaviour
                 break;
             case "BronzeCoin":
                 MoneyManager.AddCoins(coinsCost);
-                coinsPlus = true;
+                CoinsCollect();
                 break;
             case "SilverCoin":
                 MoneyManager.AddCoins(10 * coinsCost);
-                coinsPlus = true;
+                CoinsCollect();
                 break;
             case "GoldCoin":
                 MoneyManager.AddCoins(100 * coinsCost);
-                coinsPlus = true;
+                CoinsCollect();
                 break;
             case "Chest":
                 int i = 1;

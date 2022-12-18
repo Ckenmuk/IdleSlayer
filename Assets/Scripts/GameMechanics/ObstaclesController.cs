@@ -4,7 +4,7 @@ public class ObstaclesController : MonoBehaviour
 {
     private float speed = 10;
     private Rigidbody2D rb;
-    private AudioSource audio;
+    new private AudioSource audio;
 
 
     private void Start()
@@ -27,9 +27,9 @@ public class ObstaclesController : MonoBehaviour
 
         if(collision.tag == "Player")
         {
-            audio.mute = false;
+            audio.PlayOneShot(audio.clip);
             rb.transform.localPosition = new Vector3(0, -9.0f, 0);
-            Destroy(gameObject, 100);
+            Destroy(gameObject, 1000);
         }
     }
 }

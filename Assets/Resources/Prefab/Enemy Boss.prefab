@@ -11,6 +11,22 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 619490661636130211, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695903507539878977, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695903507539878977, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695903507539878977, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2423057291859541421, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
       propertyPath: m_Name
       value: Enemy Boss
@@ -78,7 +94,7 @@ PrefabInstance:
     - target: {fileID: 5641988196729696037, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3876759189950653258, guid: 5d4daff38e3d9174b873918abcf2c1d4, type: 3}
+      objectReference: {fileID: 1956354799, guid: e9bf16a942737de4dae9feb9177996cf, type: 3}
     m_RemovedComponents:
     - {fileID: 1126482973896954848, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 832986eb66a43ae469b92a5be1431342, type: 3}
