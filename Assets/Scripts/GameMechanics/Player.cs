@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public bool inv;
     public bool coinsPlus;
 
-    public float coinsCost = 1.0f;
+    public float coinsCost = 10.0f;
     private float enemyMult = 0.01f;
     private float bossMult = .1f;
     private float swordMult = -1.0f;

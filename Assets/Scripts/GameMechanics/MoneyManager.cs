@@ -6,15 +6,15 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     private Settings settings;
-
+    private ImproveManager improveManager;
     public float cps { get; private set; }
     public float coins { get; private set; }
     public float minCps { get; private set; }
-
-    private float killed;
+    public float killed { get; private set; }
     private float sec;
 
     private float chestUpdate = 1.0f;
+    public bool ifGameClosed = false;
 
     private float esd;
     private float csd;
@@ -28,13 +28,28 @@ public class MoneyManager : MonoBehaviour
     private void Start()
     {
         settings = FindObjectOfType<Settings>();
-
-        coins = settings.coins;
-        cps = settings.cps;
-        minCps = settings.minCps;
-
+        improveManager = FindObjectOfType<ImproveManager>();
+        ReadSettings();
+        ifGameClosed = false;
     }
 
+    private void ReadSettings()
+    {
+        coins = settings.datas[0];
+        cps = settings.datas[1];
+        minCps = settings.datas[2];
+        killed = settings.datas[3];
+        chestUpdate = settings.datas[28];
+        ifGameClosed = settings.Bools[6];
+    }
+
+    private void WriteSettings()
+    {
+        settings.datas[28] = chestUpdate;
+        settings.Bools[6] = ifGameClosed;
+        improveManager.SettingsUpdate();
+        ReadSettings();
+    }
 
 
     private void Update()
@@ -131,7 +146,8 @@ public class MoneyManager : MonoBehaviour
 
     public void IfGameClosed()
     {
-
+        ifGameClosed = true;
+        WriteSettings();
     }
 
     public void Bonuses(int i)
@@ -166,6 +182,7 @@ public class MoneyManager : MonoBehaviour
     public void ChestUpgrade(float value)
     {
         chestUpdate *= value;
+        WriteSettings();
     }
 
 

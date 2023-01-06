@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2928868166871688548}
   - component: {fileID: 7623035477121640715}
+  - component: {fileID: 5346175761520011067}
   m_Layer: 0
   m_Name: BronzeSprite
   m_TagString: Untagged
@@ -84,6 +85,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5346175761520011067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3190705089768776838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13995150deec9946822e2ca26993bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -2322180950842035098, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  - {fileID: -4893972260818282012, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  - {fileID: -6323751108524238166, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  - {fileID: 2722280177590742205, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  animationTime: 0.25
+  loop: 1
 --- !u!1 &8303855418190782630
 GameObject:
   m_ObjectHideFlags: 0

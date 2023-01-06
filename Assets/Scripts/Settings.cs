@@ -3,31 +3,28 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public class Settings : MonoBehaviour
 {
+    float[] General = new float[4];
+    float[] Lvl = new float[7];
+    float[] CpS = new float[7];
+    float[] Costs = new float[7];
+    public float[] Bonuses = new float[4];
+    public bool[] Bools = new bool[7];
+
     public float coins;
     public float cps;
     public float minCps;
     
-    public float fistsLvl;
-    public float stickLvl;
-    public float bbBatLvl;
-    public float rudisLvl;
-    public float swordLvl;
-
-    public float fistsCps;
-    public float stickCps;
-    public float bbBatCps;
-    public float rudisCps;
-    public float swordCps;
-
-    private float[] datas;
+    public float[] datas;
 
     public string path;
 
     public string[] data { get; private set; } = new string[0];
     public List<string> effects;
+    public List<string> Adds;
 
     [System.Obsolete]
     void Start()
@@ -55,26 +52,12 @@ public class Settings : MonoBehaviour
         effects.Add("Add 21 ; 51200000000000 ; More enemies ; EnemiesSpawnDelay ; 1,5");
         effects.Add("Add 22 ; 100000000000000 ; You're ultra killer! ; TalentsOn ; 1");
 
+        datas = new float[36];
 
-        datas = new float[]
-        {
-            coins,
-            cps,
-            minCps,
 
-            fistsLvl,
-            stickLvl,
-            bbBatLvl,
-            rudisLvl,
-            swordLvl,
+        
 
-            fistsCps,
-            stickCps,
-            bbBatCps,
-            rudisCps,
-            swordCps
-        };
-        Application.DontDestroyOnLoad(gameObject);
+    Application.DontDestroyOnLoad(gameObject);
         Application.runInBackground = true;
 
         if (path.Length == 0)
@@ -91,7 +74,7 @@ public class Settings : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(System.DateTime.Now.DayOfWeek);
+        //Debug.Log(System.DateTime.Now.DayOfWeek);
 
         if (!File.Exists(path + "settings.ini"))
         {
@@ -101,20 +84,91 @@ public class Settings : MonoBehaviour
     public void Read()
     {
         data = File.ReadAllLines(path + "settings.ini");
-        for (int i = 0; i < data.ToList().IndexOf("effects begin"); i++)
+
+        for (int i = 0; i < General.Length; i++)
         {
-            datas[i] = (float)double.Parse(data[i].Remove(0, data[i].IndexOf("=") + 2));
+            datas[i] = float.Parse(data[i].Remove(0, data[i].IndexOf(" = ") + 2));
+            General[i] = datas[i];
         }
+        for (int i = General.Length; i < (Lvl.Length + General.Length); i++)
+        {
+            datas[i] = float.Parse(data[i].Remove(0, data[i].IndexOf(" = ") + 2));
+            Lvl[i - General.Length] = datas[i];
+        }
+        for (int i = (General.Length + Lvl.Length); i < (CpS.Length * 2) + General.Length; i++)
+        {
+            datas[i] = float.Parse(data[i].Remove(0, data[i].IndexOf(" = ") + 2));
+            CpS[i - (General.Length + Lvl.Length)] = datas[i];
+        }
+        for (int i = (General.Length + Lvl.Length + CpS.Length); i < ((Costs.Length * 3) + General.Length); i++)
+        {
+            datas[i] = float.Parse(data[i].Remove(0, data[i].IndexOf(" = ") + 2));
+            Costs[i - (General.Length + Costs.Length * 2)] = datas[i];
+        }
+        for (int i = (General.Length + Lvl.Length + CpS.Length + Costs.Length); i < ((Costs.Length * 3) + General.Length + Bonuses.Length); i++)
+        {
+            datas[i] = float.Parse(data[i].Remove(0, data[i].IndexOf(" = ") + 2));
+            Bonuses[i - (General.Length + Lvl.Length + CpS.Length + Costs.Length)] = datas[i];
+        }
+        for (int i = (General.Length + Lvl.Length + CpS.Length + Costs.Length + Bonuses.Length); i < ((Costs.Length * 3) + General.Length + Bonuses.Length + Bools.Length); i++)
+        {
+            datas[i] = float.Parse(data[i].Remove(0, data[i].IndexOf(" = ") + 2));
+            bool float2bool;
+            if (datas[i] == 1) { float2bool = true; }
+            else { float2bool = false; }
+            Bools[i - (General.Length + Lvl.Length + CpS.Length + Costs.Length + Bonuses.Length)] = float2bool;
+        }
+
+        Adds.Clear();
+        for (int i = Array.IndexOf(data, "effects begin") + 1; i < Array.IndexOf(data, "effects end"); i++)
+        {
+            Adds.Add(data[i]);
+        }
+
 
     }
 
     private void WriteDefault()
     {
+        datas[General.Length + (Lvl.Length * 2)] = 1e1f;
+        datas[General.Length + (Lvl.Length * 2) + 1] = 5e2f;
+        datas[General.Length + (Lvl.Length * 2) + 2] = 2.4e3f;
+        datas[General.Length + (Lvl.Length * 2) + 3] = 1.5e4f;
+        datas[General.Length + (Lvl.Length * 2) + 4] = 1.5e5f;
+        datas[General.Length + (Lvl.Length * 2) + 5] = 3.62e7f;
+        datas[General.Length + (Lvl.Length * 2) + 6] = 4.64e8f;
+        datas[General.Length + (Lvl.Length * 3)] = 2.0f;
+        datas[General.Length + (Lvl.Length * 3) + 1] = 5.0f;
+        datas[General.Length + (Lvl.Length * 3) + 2] = 30.0f;
         List<string> td = new List<string>();
 
-        td.Add("coins = 0");
-        td.Add("cps = 0");
-        td.Add("minCps = 0");
+        for (int i = 0; i < General.Length; i++)
+        {
+            td.Add($"General[{i}] = " + datas[i]);
+        }
+        for (int i = General.Length; i < General.Length + Lvl.Length; i++)
+        {
+            td.Add($"Lvl[{i - General.Length}] = " + datas[i]);
+        }
+        for (int i = (General.Length + Lvl.Length); i < General.Length + (Lvl.Length) * 2; i++)
+        {
+            td.Add($"Cps[{i - (General.Length + Lvl.Length)}] = " + datas[i]);
+        }
+        for (int i = (General.Length + (Lvl.Length * 2)); i < General.Length + (Lvl.Length * 3); i++)
+        {
+            td.Add($"Costs[{i - (General.Length + Lvl.Length * 2)}] = " + datas[i]);
+        }
+        for (int i = (General.Length + (Lvl.Length * 3)); i < General.Length + (Lvl.Length * 3) + Bonuses.Length; i++)
+        {
+            td.Add($"Bonuses[{i - (General.Length + Lvl.Length * 3)}] = " + datas[i]);
+        }
+        for (int i = (General.Length + (Lvl.Length * 3) + Bonuses.Length); i < (General.Length + (Lvl.Length * 3) + Bonuses.Length + Bools.Length); i++)
+        {
+            float bool2float;
+            if (Bools[i - (General.Length + (Lvl.Length * 3) + Bonuses.Length)]) { bool2float = 1; }
+            else { bool2float = 0; }
+            td.Add($"Bools[{i - (General.Length + (Lvl.Length * 3) + Bonuses.Length)}] = " + bool2float);
+        }
 
         td.Add("effects begin");
         for (int i = 0; i < effects.Count; i++)
@@ -129,18 +183,51 @@ public class Settings : MonoBehaviour
         Read();
     }
 
-    public void WriteNewSettings(float coins, float cps, float min_cps)
+    public void WriteNewSettings(float[] General, float[] Lvl, float[] CpS, float[] Costs)
     {
         List<string> td = new List<string>();
 
-        td.Add($"coins = {coins}");
-        td.Add($"cps = {cps}");
-        td.Add($"minCps = { min_cps}");
+        for (int i = 0; i < General.Length; i++)
+        {
+            datas[i] = General[i];
+            td.Add($"General[{i}] = {General[i]}");
+        }
+
+        for (int i = 0; i < Lvl.Length; i++)
+        {
+            datas[General.Length + i] = Lvl[i];
+            td.Add($"Lvl[{i}] = {Lvl[i]}");
+        }
+
+        for (int i = 0; i < CpS.Length; i++)
+        {
+            datas[i + General.Length + Lvl.Length] = CpS[i];
+            td.Add($"CpS[{i}] = {CpS[i]}");
+        }
+
+        for (int i = 0; i < Costs.Length; i++)
+        {
+            datas[i + General.Length + Lvl.Length + Costs.Length] = Costs[i];
+            td.Add($"Costs[{i}] = {Costs[i]}");
+        }
+        for (int i = 0; i < Bonuses.Length; i++)
+        {
+            datas[i + General.Length + Lvl.Length + Costs.Length + CpS.Length] = Bonuses[i];
+            td.Add($"Bonuses[{i}] = {Bonuses[i]}");
+        }
+        for (int i = 0; i < Bools.Length; i++)
+        {
+            float bool2float;
+            if (Bools[i]) { bool2float = 1; }
+            else { bool2float = 0; }
+            datas[i + General.Length + Lvl.Length + Costs.Length + CpS.Length + Bonuses.Length] = bool2float;
+            td.Add($"Bonuses[{i}] = {bool2float}");
+        }
 
         td.Add("effects begin");
-        for (int i = 0; i < effects.Count; i++)
+        for (int i = 0; i < Adds.Count; i++)
         {
-            td.Add(effects[i]);
+            td.Add(Adds[i]);
         }
         td.Add("effects end");
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AddAddative : MonoBehaviour
@@ -5,7 +6,13 @@ public class AddAddative : MonoBehaviour
     public string title;
     public float value;
     public float cost;
-    
+    public List<string> Adds;
+
+    private void Start()
+    {
+        Adds.AddRange(FindObjectOfType<Settings>().Adds);
+    }
+
     public void ClickAdd()
     {
         ObstaclesSpawn obstaclesSpawn = FindObjectOfType<ObstaclesSpawn>();
@@ -88,8 +95,20 @@ public class AddAddative : MonoBehaviour
                 default:
                     break;
             }
+            int index = 0;
+            for (int i = 0; i < Adds.Count; i++)
+            {
+                if (Adds[i].Contains(title))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            FindObjectOfType<Settings>().Adds.Remove(Adds[index]);
+
             Destroy(gameObject);
+
         }
-        
+
     }
 }

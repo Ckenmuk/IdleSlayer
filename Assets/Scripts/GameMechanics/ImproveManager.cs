@@ -19,6 +19,7 @@ public class ImproveManager : MonoBehaviour
     private float minCps;
     private float coins;
     private float cps;
+    private float killed;
 
     [SerializeField] private GameObject[] Improves;
 
@@ -59,7 +60,7 @@ public class ImproveManager : MonoBehaviour
     private void Start()
     {
         settings = FindObjectOfType<Settings>();
-
+        ReadSettings();
         t = tmax;
     }
     
@@ -68,6 +69,7 @@ public class ImproveManager : MonoBehaviour
         cps = GetComponent<MoneyManager>().cps;
         minCps = GetComponent<MoneyManager>().minCps;
         coins = GetComponent<MoneyManager>().coins;
+        killed = GetComponent<MoneyManager>().killed;
         ShowImprove();
         SetCost();
         SettingsUpdate();
@@ -86,6 +88,7 @@ public class ImproveManager : MonoBehaviour
     private void ShowImprove()
     {
         float[] Costs = { fistsCost, stickCost, bbBatCost, rudisCost, swordCost, axeCost, hammerCost };
+
 
         for (int i = 0; i < Costs.Length; i++)
         {
@@ -114,17 +117,47 @@ public class ImproveManager : MonoBehaviour
 
     }
 
-    private void SettingsUpdate()
+    private void ReadSettings()
     {
+        coins = settings.datas[0];
+        cps = settings.datas[1];
+        minCps = settings.datas[2];
+        killed = settings.datas[3];
+        fistsLvl = settings.datas[4];
+        stickLvl = settings.datas[5];
+        bbBatLvl = settings.datas[6];
+        rudisLvl = settings.datas[7];
+        swordLvl = settings.datas[8];
+        axeLvl = settings.datas[9];
+        hammerLvl = settings.datas[10];
+        fistsCps = settings.datas[11];
+        stickCps = settings.datas[12];
+        bbBatCps = settings.datas[13];
+        rudisCps = settings.datas[14];
+        swordCps = settings.datas[15];
+        axeCps = settings.datas[16];
+        hammerCps = settings.datas[17];
+        fistsCost = settings.datas[18];
+        stickCost = settings.datas[19];
+        bbBatCost = settings.datas[20];
+        rudisCost = settings.datas[21];
+        swordCost = settings.datas[22];
+        axeCost = settings.datas[23];
+        hammerCost = settings.datas[24];
+    }
+
+    public void SettingsUpdate()
+    {
+        float[] General = { coins, cps, minCps, killed };
+        float[] Lvl = { fistsLvl, stickLvl, bbBatLvl, rudisLvl, swordLvl, axeLvl, hammerLvl };
+        float[] CpS = { fistsCps, stickCps, bbBatCps, rudisCps, swordCps, axeCps, hammerCps };
+        float[] Costs = { fistsCost, stickCost, bbBatCost, rudisCost, swordCost, axeCost, hammerCost };
+
 
         if (t <= 0)
         {
-            settings.coins = coins;
-            settings.cps = cps;
-            settings.minCps = minCps;
-
-            settings.WriteNewSettings(coins, cps, minCps);
-
+            settings.WriteNewSettings(General, Lvl, CpS, Costs);
+            ReadSettings();
             t = tmax;
         }
         else
